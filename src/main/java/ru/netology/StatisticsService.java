@@ -44,13 +44,8 @@ public class StatisticsService {
 
     public int getLowestMonths(int[] sales) {
         int lowestMonths = 0;
-        int middleSum = 0;
         for (long sale : sales) {
-            middleSum += sale;
-        }
-        middleSum /= sales.length;
-        for (long sale : sales) {
-            if (sale < middleSum) {
+            if (sale < getMiddleSum(sales)) {
                 lowestMonths = lowestMonths + 1;
             }
         }
@@ -59,13 +54,8 @@ public class StatisticsService {
 
     public int getBestMonths(int[] sales) {
         int bestMonths = 0;
-        int middleSum = 0;
         for (long sale : sales) {
-            middleSum += sale;
-        }
-        middleSum /= sales.length;
-        for (long sale : sales) {
-            if (sale > middleSum) {
+            if (sale > getMiddleSum(sales)) {
                 bestMonths = bestMonths + 1;
             }
         }
