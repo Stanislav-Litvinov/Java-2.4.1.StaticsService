@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class statisticsServiceTest {git remote add origin git@github.com:Stanislav-Litvinov/StaticsService.git
+class statisticsServiceTest {
     @Test
     void ShouldCalculateSum() {
         StatisticsService service = new StatisticsService();
