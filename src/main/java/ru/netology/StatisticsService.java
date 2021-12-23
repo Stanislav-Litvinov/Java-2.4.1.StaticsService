@@ -3,60 +3,82 @@ package ru.netology;
 public class StatisticsService {
     public int getSum(int[] sales) {
         int sum = 0;
-        for (long sale : sales) {
+        for (int sale : sales) {
             sum += sale;
         }
         return sum;
     }
 
     public int getMiddleSum(int[] sales) {
-        int middleSum = 0;
-        for (long sale : sales) {
-            middleSum += sale;
-        }
-        middleSum /= sales.length;
-        return middleSum;
+        return getSum(sales) / sales.length;
     }
 
     public int getMinMonth(int[] sales) {
+        int min = Min(sales);
+        int monthCount = 0;
         int minMonth = 0;
-        int month = 0;
-        for (long sale : sales) {
-            if (sale <= sales[minMonth]) {
-                minMonth = month;
+        for (int sale : sales) {
+            monthCount++;
+            if (sale == min) {
+                minMonth = monthCount;
             }
-            month = month + 1;
         }
-        return minMonth + 1;
+        return minMonth;
     }
 
-    public int getMaxMonth(int[] sales) {
-        int maxMonth = 0;
-        int bestMonth = 0;
-        for (long sale : sales) {
-            if (sale >= sales[maxMonth]) {
-                maxMonth = bestMonth;
+    private int Min(int[] sales) {
+        int min = sales[0];
+        for (int sale : sales) {
+            if (sale < min) {
+                min = sale;
             }
-            bestMonth = bestMonth + 1;
         }
-        return maxMonth + 1;
+        return min;
+    }
+
+
+    public int getMaxMonth(int[] sales) {
+        int max = Max(sales);
+        int monthCount = 0;
+        int monthWithMax = 0;
+        for (int sale : sales) {
+            monthCount++;
+            if (sale == max) {
+                monthWithMax = monthCount;
+            }
+        }
+        return monthWithMax;
+    }
+
+    private int Max(int[] sales) {
+        int max = sales[0];
+        for (int sale : sales) {
+            if (sale > max) {
+                max = sale;
+            }
+        }
+        return max;
     }
 
     public int getLowestMonths(int[] sales) {
+        int middle = getMiddleSum(sales);
+
         int lowestMonths = 0;
-        for (long sale : sales) {
-            if (sale < getMiddleSum(sales)) {
-                lowestMonths = lowestMonths + 1;
+        for (int sale : sales) {
+            if (sale < middle) {
+                lowestMonths++;
             }
         }
         return lowestMonths;
     }
 
     public int getBestMonths(int[] sales) {
+        int middle = getMiddleSum(sales);
+
         int bestMonths = 0;
-        for (long sale : sales) {
-            if (sale > getMiddleSum(sales)) {
-                bestMonths = bestMonths + 1;
+        for (int sale : sales) {
+            if (sale > middle) {
+                bestMonths++;
             }
         }
         return bestMonths;

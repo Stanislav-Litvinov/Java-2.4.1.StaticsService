@@ -4,76 +4,37 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class statisticsServiceTest {
+class StatisticsServiceTest {
+    private StatisticsService service = new StatisticsService();
+    private int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+
     @Test
     void ShouldCalculateSum() {
-        StatisticsService service = new StatisticsService();
-
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 180;
-
-        int actual = service.getSum(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(180, service.getSum(sales));
     }
 
     @Test
     void ShouldCalculateMiddleSum() {
-        StatisticsService service = new StatisticsService();
-
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 15;
-
-        int actual = service.getMiddleSum(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(15, service.getMiddleSum(sales));
     }
 
     @Test
     void ShouldCalculateMinMonth() {
-        StatisticsService service = new StatisticsService();
-
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 9;
-
-        int actual = service.getMinMonth(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(9, service.getMinMonth(sales));
     }
 
     @Test
     void ShouldCalculateMaxMonth() {
-        StatisticsService service = new StatisticsService();
-
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 8;
-
-        int actual = service.getMaxMonth(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(8, service.getMaxMonth(sales));
     }
 
     @Test
     void ShouldCalculateLowestMonths() {
-        StatisticsService service = new StatisticsService();
-
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
-
-        int actual = service.getLowestMonths(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(5, service.getLowestMonths(sales));
     }
 
     @Test
     void ShouldCalculateBestMonths() {
-        StatisticsService service = new StatisticsService();
-
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
-
-        int actual = service.getBestMonths(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(5, service.getBestMonths(sales));
     }
 }
